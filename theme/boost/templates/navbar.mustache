@@ -63,6 +63,9 @@
         </button>
 
         <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
+            
+            <!-- UVLE Logo -->
+            <img src="{{{ config.wwwroot }}}/theme/boost/pix/uvle.png" class="uvle-logo me-2" alt="UVLE" style="height: 30px; width: auto;">
 
             {{# output.should_display_navbar_logo }}
                 <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">
