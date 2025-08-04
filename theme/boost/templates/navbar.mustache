@@ -62,6 +62,13 @@
             <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
         </button>
 
+        {{#hasnavigation}}
+            <button class="btn btn-light btn-sm me-2 d-none d-md-inline-block" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-navigation" data-toggle="tooltip" data-placement="bottom" title="{{#str}}opennavdrawer, core{{/str}}">
+                <span class="sr-only">{{#str}}opennavdrawer, core{{/str}}</span>
+                {{#pix}} i/menu, core {{/pix}}
+            </button>
+        {{/hasnavigation}}
+
         <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
             
             <!-- UVLE Logo -->

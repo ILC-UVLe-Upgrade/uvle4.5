@@ -58,6 +58,22 @@
     {{{ output.standard_top_of_body_html }}}
 
     {{> theme_boost/navbar }}
+    {{#hasnavigation}}
+        {{< theme_boost/drawer }}
+            {{$id}}theme_boost-drawers-navigation{{/id}}
+            {{$drawerheadercontent}}
+                <h4 class="drawer-heading">{{#str}}navigation, core{{/str}}</h4>
+            {{/drawerheadercontent}}
+            {{$drawerclasses}}drawer drawer-left {{#navdraweropen}}show{{/navdraweropen}}{{/drawerclasses}}
+            {{$drawercontent}}
+                {{> theme_boost/navigation-drawer}}
+            {{/drawercontent}}
+            {{$drawerpreferencename}}drawer-open-nav{{/drawerpreferencename}}
+            {{$drawerstate}}show-drawer-left{{/drawerstate}}
+            {{$tooltipplacement}}right{{/tooltipplacement}}
+            {{$closebuttontext}}{{#str}}closenavdrawer, core{{/str}}{{/closebuttontext}}
+        {{/ theme_boost/drawer}}
+    {{/hasnavigation}}
     {{#courseindex}}
         {{< theme_boost/drawer }}
             {{$id}}theme_boost-drawers-courseindex{{/id}}
@@ -92,9 +108,25 @@
             {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
         {{/ theme_boost/drawer}}
     {{/hasblocks}}
-    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
+    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#navdraweropen}}show-drawer-left{{/navdraweropen}} {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
         <div id="topofscroll" class="main-inner">
             <div class="drawer-toggles d-flex">
+                {{#hasnavigation}}
+                    <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
+                        <button
+                            class="btn icon-no-margin"
+                            data-toggler="drawers"
+                            data-action="toggle"
+                            data-target="theme_boost-drawers-navigation"
+                            data-toggle="tooltip"
+                            data-placement="right"
+                            title="{{#str}}opennavdrawer, core{{/str}}"
+                        >
+                            <span class="sr-only">{{#str}}opennavdrawer, core{{/str}}</span>
+                            {{#pix}} i/menu, core {{/pix}}
+                        </button>
+                    </div>
+                {{/hasnavigation}}
                 {{#courseindex}}
                     <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
                         <button
