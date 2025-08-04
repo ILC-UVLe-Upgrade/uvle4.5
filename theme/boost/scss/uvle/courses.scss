@@ -1,0 +1,102 @@
+// UVLE Courses Module
+// Migrated for Moodle 4.x course interface compatibility
+// Course page and activity styling
+
+// Announcement block
+.block_news_items {
+    li.post {
+        padding: 5px 0;
+        display: flex;
+        flex-direction: column;
+        div.info {
+            order: -1;
+            font-weight: bold;
+        }
+        div.head {
+            display: flex;
+            font-size: 0.9em;
+            div.name {
+                order: -1;
+                margin-right: 5px;
+                &:after {
+                    content:","
+                }
+            }
+        }
+    }
+}
+
+body.editing .aalink {
+    pointer-events: none;
+}
+
+body.editing .aalink > span.quickediticon {
+    pointer-events: auto;
+}
+
+// Justify enroll users left
+div[data-table-uniqueid ^='user-index-participants-'] {
+    justify-content: flex-start !important;
+}
+
+form[id ^= 'enrolusersbutton'] > div > input[type="submit"] {
+    font-size: 1.5em;
+}
+
+// Moodle 4.x: Course content styling
+.course-content {
+    .section {
+        .section-title {
+            h3 {
+                color: $up-maroon;
+            }
+        }
+        
+        .activity {
+            .activityinstance {
+                a {
+                    color: $up-green;
+                    
+                    &:hover {
+                        color: $up-maroon;
+                    }
+                }
+            }
+            
+            .badge {
+                &.badge-info {
+                    background-color: $up-yellow;
+                    color: $black;
+                }
+                
+                &.badge-success {
+                    background-color: $up-green;
+                }
+                
+                &.badge-danger {
+                    background-color: $up-maroon;
+                }
+            }
+        }
+    }
+}
+
+// Moodle 4.x: Activity completion styling
+.activity-completion {
+    .completion-icon {
+        &.completion-complete {
+            color: $up-green;
+        }
+        
+        &.completion-incomplete {
+            color: $gray-500;
+        }
+    }
+}
+
+// Moodle 4.x: Course navigation improvements
+.course-header {
+    .course-title {
+        color: $up-maroon;
+    }
+}

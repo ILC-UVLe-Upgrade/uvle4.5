@@ -1,0 +1,77 @@
+// UVLE Buttons Module
+// Migrated for Moodle 4.x and Bootstrap 5 compatibility
+// UP brand button styling
+
+$btn-normal-inset: 4px;
+$btn-hover-inset: 2px;
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color}:not(.homepage-btn) {
+    position: relative;
+    top: -2px;
+    transition: all 40ms linear;
+    
+    // Enhanced button styling for better accessibility
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($value, 0.25);
+        outline: none;
+    }
+    
+    // Moodle 4.x: Ensure compatibility with new button variants
+    &.btn-sm {
+        font-size: $input-btn-font-size-sm;
+    }
+    
+    &.btn-lg {
+        font-size: $input-btn-font-size-lg;
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    // Enhanced outline button styling
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($value, 0.25);
+        outline: none;
+    }
+  }
+}
+
+// Moodle 4.x: Primary action buttons styling
+.btn-primary {
+    background-color: $up-green;
+    border-color: $up-green;
+    
+    &:hover, &:focus, &:active {
+        background-color: darken($up-green, 10%);
+        border-color: darken($up-green, 10%);
+    }
+}
+
+// Moodle 4.x: Secondary action buttons styling
+.btn-secondary {
+    color: $up-maroon;
+    border-color: $up-maroon;
+    
+    &:hover, &:focus, &:active {
+        background-color: $up-maroon;
+        border-color: $up-maroon;
+        color: $white;
+    }
+}
+
+// Moodle 4.x: Activity action buttons
+.activity-actions {
+    .btn {
+        margin: 0 2px;
+        
+        &.btn-link {
+            color: $up-green;
+            
+            &:hover {
+                color: $up-maroon;
+            }
+        }
+    }
+}

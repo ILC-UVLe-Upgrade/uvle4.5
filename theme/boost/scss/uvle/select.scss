@@ -1,0 +1,30 @@
+// UVLE Select Module
+// Migrated for Moodle 4.x compatibility
+// Form element styling
+
+option {
+    padding: 5px 5px 5px 5px;
+}
+
+// Moodle 4.x: Enhanced form styling
+.form-control, .form-select {
+    &:focus {
+        border-color: $up-green;
+        box-shadow: 0 0 0 0.2rem rgba($up-green, 0.25);
+    }
+}
+
+// Custom select styling for better UP branding
+select.form-select {
+    border-color: $gray-500;
+    
+    &:focus {
+        border-color: $up-green;
+        box-shadow: 0 0 0 0.2rem rgba($up-green, 0.25);
+    }
+    
+    option:checked {
+        background-color: $up-green;
+        color: $white;
+    }
+}

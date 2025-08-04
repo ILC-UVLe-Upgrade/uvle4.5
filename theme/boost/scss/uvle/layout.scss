@@ -1,0 +1,168 @@
+// UVLE Layout Module
+// Migrated for Moodle 4.x with course index and new layout compatibility
+// UP brand layout modifications
+
+// Updates on site-wide layouts
+
+// https://moodle.org/mod/forum/discuss.php?d=426608&parent=1717552
+fieldset:target::before {
+    content: unset;
+}
+
+@include media-breakpoint-up(sm) {
+    // Remove border around the main content (try removing this part and see if you like it)
+    #region-main {
+        border: 0;
+    }
+}
+
+#page-header {
+    // Top card shouldn't have border
+    .card {
+        border: 0;
+    }
+}
+
+.card {
+    // UP MAROON!
+    h1, h2, h3, h4, h5 {
+        color: $up-maroon;
+    }
+}
+
+// Global header styling - ensure all headers use UP maroon
+h1, h2, h3, h4, h5, h6 {
+    color: $up-maroon !important;
+}
+
+// Page header specific styling
+#page-header h1,
+#page-header h2,
+#page-header h3,
+#page-header h4,
+#page-header h5,
+#page-header h6 {
+    color: $up-maroon !important;
+}
+
+// Content area headers
+#region-main h1,
+#region-main h2,
+#region-main h3,
+#region-main h4,
+#region-main h5,
+#region-main h6 {
+    color: $up-maroon !important;
+}
+
+div.page-header-headings {
+    h1 {
+        font-size: 3em;
+    }
+}
+
+#region-main, .block-region {
+    // Shadows for cards
+    overflow: visible;
+    .card {
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        border: 0;
+    }
+    .block.card.block_with_controls {
+        border: 1px solid #ccc;
+    }
+}
+
+nav > ol.breadcrumb {
+    // Breadcrumb spacing fix
+    padding-left: 4px;
+}
+
+#page-site-index #page-header {
+    // Hide header on home page
+    display: none;
+}
+
+#page-footer {
+    background: $up-maroon;
+    ul.footer-links {
+        font-size: 0.85em;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+            a {
+                font-weight: bold;
+                text-decoration: none;
+                color: rgba(255, 255, 255, 0.8);
+            }
+            margin-bottom: 8px;
+        }
+    }
+}
+
+// Moodle 4.x: Course index layout adaptations
+.courseindex {
+    .list-group-item {
+        border-color: rgba($up-maroon, 0.2);
+        
+        &.active {
+            background-color: rgba($up-maroon, 0.1);
+            border-color: $up-maroon;
+        }
+    }
+}
+
+// Moodle 4.x: Activity navigation layout
+.activity-navigation {
+    .btn {
+        border-color: $up-maroon;
+        color: $up-maroon;
+        
+        &:hover {
+            background-color: $up-maroon;
+            color: $white;
+        }
+    }
+}
+
+// PROFILE LAYOUTS
+
+body.path-user {
+    div.page-header-headings > h1 {
+        font-size: 1.5em;
+    }
+    div.page-header-image {
+        margin: 0; padding: 0;
+        & > a > img {
+            height: 50px;
+            width: 50px;
+        }
+    }
+    div.page-context-header {
+        display: flex;
+        align-items: center;
+    }
+    #fitem_id_files_filemanager {
+        div.col-form-label {
+            display: none !important;
+        }
+    }
+}
+
+body.path-my {
+    div.card-body {
+        margin: 0; padding: 0;
+    }
+}
+
+// Moodle 4.x: Dashboard layout improvements
+body.pagelayout-mydashboard {
+    .block {
+        .card-body {
+            h1, h2, h3, h4, h5 {
+                color: $up-maroon;
+            }
+        }
+    }
+}
