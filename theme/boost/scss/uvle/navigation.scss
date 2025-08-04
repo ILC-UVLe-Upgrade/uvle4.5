@@ -1,37 +1,54 @@
 /* UVLE Navigation Drawer Styles */
 
-// Navigation Drawer
+// Navigation Drawer - Dark Theme matching original UVLE
 #theme_boost-drawers-navigation {
     .drawer {
-        background-color: #fff;
-        border-right: 1px solid #dee2e6;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        background-color: #161616;
+        border-right: 1px solid #333;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        color: #ccc;
+        top: 60px; // Match navbar height
+        height: calc(100% - 60px);
     }
 
     .drawer-heading {
-        color: $up-maroon;
+        color: #fff;
         font-weight: 600;
         font-size: 1rem;
         margin-bottom: 0.5rem;
         padding: 0.75rem 1rem;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid #333;
+        background-color: #000000;
+    }
+
+    .list-group {
+        box-shadow: rgb(0 0 0 / 5%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 6px, rgb(0 0 0 / 5%) 0 10px 20px;
+        padding: 5px;
+        font-size: 0.85em;
+        overflow: hidden;
+        border-radius: 5px;
+        background: #000000;
+        margin: 0;
     }
 
     .list-group-item {
         border: none;
-        border-bottom: 1px solid #f8f9fa;
-        padding: 0.75rem 1rem;
+        padding: 10px 20px;
         transition: all 0.2s ease;
+        background-color: rgba(0,0,0,0);
+        color: #ccc;
+        border-radius: 5px;
+        margin-bottom: 2px;
 
         &:hover {
-            background-color: #f8f9fa;
-            color: $up-maroon;
+            background-color: #2b2b2b;
+            color: #fff;
         }
 
         &.active {
             background-color: $up-maroon;
             color: #fff;
-            border-color: $up-maroon;
+            border: none;
 
             &:hover {
                 background-color: darken($up-maroon, 5%);
@@ -40,70 +57,72 @@
         }
 
         .flex-shrink-0 {
-            opacity: 0.7;
+            color: #fff;
+            margin-right: 1.5em;
+            opacity: 1;
         }
 
-        &.active .flex-shrink-0 {
-            opacity: 1;
+        // Ensure proper text alignment and spacing
+        .d-flex.align-items-center {
+            width: 100%;
+        }
+
+        .flex-grow-1 {
+            padding-left: 0;
         }
     }
 
     .list-group-divider {
         height: 1px;
-        background-color: #dee2e6;
+        background-color: #333;
         margin: 0.5rem 0;
     }
 }
 
-// Navigation Toggle Button in Navbar
+// Navigation Toggle Button in Navbar - Matching original UVLE style
 .navbar {
     [data-target="theme_boost-drawers-navigation"] {
-        background-color: transparent;
-        border: 1px solid #dee2e6;
-        color: $up-maroon;
+        background: rgba(0,0,0,0) !important;
+        border: 0 !important;
+        box-shadow: none !important;
         padding: 0.375rem 0.75rem;
-        transition: all 0.2s ease;
 
-        &:hover {
-            background-color: $up-maroon;
-            color: #fff;
-            border-color: $up-maroon;
+        // Hamburger icon styling
+        .navbar-toggler-icon {
+            width: 1.25em;
+            height: 1.25em;
         }
 
         &:focus {
-            box-shadow: 0 0 0 0.2rem rgba($up-maroon, 0.25);
-            border-color: $up-maroon;
-        }
-
-        .icon {
-            width: 16px;
-            height: 16px;
+            box-shadow: none !important;
+            outline: 0;
         }
     }
 }
 
-// Drawer Toggle in Content Area
+// Drawer Toggle in Content Area - Consistent with Navbar Toggle
 .drawer-toggles {
     .drawer-toggler {
         [data-target="theme_boost-drawers-navigation"] {
             background-color: #fff;
             border: 1px solid #dee2e6;
-            color: $up-maroon;
+            color: #6c757d;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
             padding: 0.5rem;
             transition: all 0.2s ease;
 
             &:hover {
-                background-color: $up-maroon;
-                color: #fff;
-                border-color: $up-maroon;
+                background-color: #f8f9fa;
+                color: #495057;
+                border-color: #adb5bd;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             }
 
             &:focus {
-                box-shadow: 0 0 0 0.2rem rgba($up-maroon, 0.25);
-                border-color: $up-maroon;
+                box-shadow: 0 0 0 0.125rem rgba(13, 110, 253, 0.25);
+                border-color: #86b7fe;
+                outline: 0;
             }
         }
     }
@@ -126,7 +145,7 @@
 // Accessibility improvements
 .drawer-toggler button[data-target="theme_boost-drawers-navigation"]:focus,
 .navbar button[data-target="theme_boost-drawers-navigation"]:focus {
-    outline: 2px solid $up-maroon;
+    outline: 2px solid #0d6efd;
     outline-offset: 2px;
 }
 
