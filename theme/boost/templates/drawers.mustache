@@ -62,10 +62,12 @@
         {{< theme_boost/drawer }}
             {{$id}}theme_boost-drawers-navigation{{/id}}
             {{$drawerheadercontent}}
-                <h4 class="drawer-heading">{{#str}}navigation, core{{/str}}</h4>
             {{/drawerheadercontent}}
             {{$drawerclasses}}drawer drawer-left {{#navdraweropen}}show{{/navdraweropen}}{{/drawerclasses}}
             {{$drawercontent}}
+                <div class="uvle-drawer-logo">
+                    <img src="/theme/boost/pix/up_inverted.png" alt="UP Logo" class="up-logo" />
+                </div>
                 {{> theme_boost/navigation-drawer}}
             {{/drawercontent}}
             {{$drawerpreferencename}}drawer-open-nav{{/drawerpreferencename}}
@@ -108,7 +110,7 @@
             {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
         {{/ theme_boost/drawer}}
     {{/hasblocks}}
-    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#navdraweropen}}show-drawer-left{{/navdraweropen}} {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
+    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#navdraweropen}}show-drawer-left{{/navdraweropen}} {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container" style="padding: 0px">
         <div id="topofscroll" class="main-inner">
             <div class="drawer-toggles d-flex">
                 {{#hasnavigation}}
@@ -120,10 +122,10 @@
                             data-target="theme_boost-drawers-navigation"
                             data-toggle="tooltip"
                             data-placement="right"
-                            title="{{#str}}opennavdrawer, core{{/str}}"
+                            title="{{#str}}opendrawernav, core{{/str}}"
                         >
-                            <span class="sr-only">{{#str}}opennavdrawer, core{{/str}}</span>
-                            {{#pix}} i/menu, core {{/pix}}
+                            <span class="sr-only">{{#str}}opendrawernav, core{{/str}}</span>
+                            {{#pix}} t/index_drawer, moodle {{/pix}}
                         </button>
                     </div>
                 {{/hasnavigation}}

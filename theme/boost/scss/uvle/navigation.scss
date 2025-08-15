@@ -3,7 +3,7 @@
 // Navigation Drawer - Dark Theme matching original UVLE
 #theme_boost-drawers-navigation {
     .drawer {
-        background-color: #161616;
+        background-color: #161616 !important;
         border-right: 1px solid #333;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
         color: #ccc;
@@ -11,29 +11,60 @@
         height: calc(100% - 60px);
     }
 
-    .drawer-heading {
-        color: #fff;
-        font-weight: 600;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-        padding: 0.75rem 1rem;
+    // Hide the close button and default header
+    .drawerheader {
+        background-color: #161616 !important;
+        
+        .drawertoggle,
+        .btn.drawertoggle,
+        button.drawertoggle {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        .drawerheadercontent {
+            display: block !important; // Override the hidden class
+            padding: 0;
+            margin: 0;
+            background-color: #161616 !important;
+        }
+    }
+
+    // Force drawer content background to be dark
+    .drawercontent {
+        background-color: #161616 !important;
+    }
+
+    // UP Logo styling in drawer header
+    .uvle-drawer-logo {
+        padding: 15px 20px;
+        text-align: center;
+        background-color: #161616 !important;
         border-bottom: 1px solid #333;
-        background-color: #000000;
+        
+        .up-logo {
+            height: 128px;
+            width: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; // Prevent overflow and maintain aspect ratio
+        }
     }
 
     .list-group {
         box-shadow: rgb(0 0 0 / 5%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 6px, rgb(0 0 0 / 5%) 0 10px 20px;
-        padding: 5px;
+        padding: 5px 15px; // Add horizontal padding to the container
         font-size: 0.85em;
         overflow: hidden;
         border-radius: 5px;
-        background: #000000;
-        margin: 0;
+        background: #000000 !important;
+        margin: 15px 0 0 0; // Add top margin to space from logo
     }
 
     .list-group-item {
         border: none;
-        padding: 10px 20px;
+        padding: 12px 15px; // Increased vertical and adjusted horizontal padding
         transition: all 0.2s ease;
         background-color: rgba(0,0,0,0);
         color: #ccc;
