@@ -2,6 +2,35 @@
 // Migrated for Moodle 4.x with course index and new layout compatibility
 // UP brand layout modifications
 
+// Sticky Footer Implementation
+// Ensure footer always sticks to bottom of viewport
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
 // Updates on site-wide layouts
 
 // https://moodle.org/mod/forum/discuss.php?d=426608&parent=1717552
@@ -59,7 +88,9 @@ nav > ol.breadcrumb {
 }
 
 #page-footer {
+    flex-shrink: 0;
     background: $up-maroon;
+    margin-top: auto;
     ul.footer-links {
         font-size: 0.85em;
         list-style-type: none;

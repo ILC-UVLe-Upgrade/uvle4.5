@@ -33,7 +33,8 @@ $addblockbutton = $OUTPUT->addblockbutton();
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
     $blockdraweropen = (get_user_preferences('drawer-open-block') == true);
-    $navdraweropen = (get_user_preferences('drawer-open-nav') == true);
+    // [UVLE] Override user settings for now
+    $navdraweropen = true; // (get_user_preferences('drawer-open-nav') == true);
 } else {
     $courseindexopen = false;
     $blockdraweropen = false;

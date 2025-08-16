@@ -113,22 +113,6 @@
     <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#navdraweropen}}show-drawer-left{{/navdraweropen}} {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container" style="padding: 0px">
         <div id="topofscroll" class="main-inner">
             <div class="drawer-toggles d-flex">
-                {{#hasnavigation}}
-                    <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
-                        <button
-                            class="btn icon-no-margin"
-                            data-toggler="drawers"
-                            data-action="toggle"
-                            data-target="theme_boost-drawers-navigation"
-                            data-toggle="tooltip"
-                            data-placement="right"
-                            title="{{#str}}opendrawernav, core{{/str}}"
-                        >
-                            <span class="sr-only">{{#str}}opendrawernav, core{{/str}}</span>
-                            {{#pix}} t/index_drawer, moodle {{/pix}}
-                        </button>
-                    </div>
-                {{/hasnavigation}}
                 {{#courseindex}}
                     <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
                         <button
