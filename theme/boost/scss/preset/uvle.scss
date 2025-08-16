@@ -331,6 +331,31 @@ a[data-key="home"] {
     }
 }
 
+// Footer Wavy SVG Transition
+.footer-wave-transition {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    margin-top: -1px; // Ensure no gap between content and wave
+}
+
+.wave-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+// Ensure footer background matches the wave color
+#page-footer {
+    background-color: $up-maroon;
+    position: relative;
+    z-index: 1;
+}
+
 // Import UVLE custom modules
 @import "uvle/colors";
 @import "uvle/navbar";
