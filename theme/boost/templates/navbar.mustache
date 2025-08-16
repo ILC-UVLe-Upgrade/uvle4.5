@@ -62,7 +62,17 @@
             <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
         </button>
 
+        {{#hasnavigation}}
+            <button class="navbar-toggler d-none d-md-inline-block me-2" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-navigation" data-toggle="tooltip" data-placement="bottom" title="{{#str}}opendrawernav, core{{/str}}">
+                <span class="sr-only">{{#str}}opendrawernav, core{{/str}}</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        {{/hasnavigation}}
+
         <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 me-4 p-0 aabtn">
+            
+            <!-- UVLE Logo -->
+            <img src="{{{ config.wwwroot }}}/theme/boost/pix/uvle.png" class="uvle-logo me-2" alt="UVLE" style="height: 30px; width: auto;">
 
             {{# output.should_display_navbar_logo }}
                 <img src="{{output.get_compact_logo_url}}" class="logo me-1" alt="{{sitename}}">

@@ -133,6 +133,8 @@ function theme_boost_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     } else if ($filename == 'plain.scss') {
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
+    } else if ($filename == 'uvle.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/uvle.scss');
     } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
         $scss .= $presetfile->get_content();
     } else {

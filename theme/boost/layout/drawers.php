@@ -33,9 +33,12 @@ $addblockbutton = $OUTPUT->addblockbutton();
 if (isloggedin()) {
     $courseindexopen = (get_user_preferences('drawer-open-index', true) == true);
     $blockdraweropen = (get_user_preferences('drawer-open-block') == true);
+    // [UVLE] Override user settings for now
+    $navdraweropen = true; // (get_user_preferences('drawer-open-nav') == true);
 } else {
     $courseindexopen = false;
     $blockdraweropen = false;
+    $navdraweropen = false;
 }
 
 if (defined('BEHAT_SITE_RUNNING') && get_user_preferences('behat_keep_drawer_closed') != 1) {
@@ -55,6 +58,49 @@ if (!$hasblocks) {
 $courseindex = core_course_drawer();
 if (!$courseindex) {
     $courseindexopen = false;
+}
+
+// Get navigation for the navigation drawer
+$hasnavigation = true; // Always show navigation drawer
+$navigation = [];
+
+// Simple navigation structure - avoid flatnav for now
+if (isloggedin()) {
+    $navigation = [
+        [
+            'key' => 'dashboard',
+            'text' => get_string('myhome'),
+            'action' => (new moodle_url('/my/'))->out(false),
+            'isactive' => $PAGE->url->compare(new moodle_url('/my/'), URL_MATCH_BASE),
+            'classes' => '',
+            'get_indent' => 0,
+            'showdivider' => false,
+            'icon' => $OUTPUT->pix_icon('i/dashboard', '', 'core')
+        ],
+        [
+            'key' => 'courses',
+            'text' => get_string('courses'),
+            'action' => (new moodle_url('/course/index.php'))->out(false),
+            'isactive' => $PAGE->url->compare(new moodle_url('/course/'), URL_MATCH_BASE),
+            'classes' => '',
+            'get_indent' => 0,
+            'showdivider' => false,
+            'icon' => $OUTPUT->pix_icon('i/course', '', 'core')
+        ],
+        [
+            'key' => 'calendar',
+            'text' => get_string('calendar', 'calendar'),
+            'action' => (new moodle_url('/calendar/view.php'))->out(false),
+            'isactive' => $PAGE->url->compare(new moodle_url('/calendar/'), URL_MATCH_BASE),
+            'classes' => '',
+            'get_indent' => 0,
+            'showdivider' => false,
+            'icon' => $OUTPUT->pix_icon('i/calendar', '', 'core')
+        ]
+    ];
+} else {
+    $hasnavigation = false;
+    $navdraweropen = false;
 }
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
@@ -90,7 +136,10 @@ $templatecontext = [
     'bodyattributes' => $bodyattributes,
     'courseindexopen' => $courseindexopen,
     'blockdraweropen' => $blockdraweropen,
+    'navdraweropen' => $navdraweropen,
     'courseindex' => $courseindex,
+    'navigation' => $navigation,
+    'hasnavigation' => $hasnavigation,
     'primarymoremenu' => $primarymenu['moremenu'],
     'secondarymoremenu' => $secondarynavigation ?: false,
     'mobileprimarynav' => $primarymenu['mobileprimarynav'],

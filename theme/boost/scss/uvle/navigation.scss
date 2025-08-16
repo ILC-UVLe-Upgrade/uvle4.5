@@ -1,0 +1,282 @@
+/* UVLE Navigation Drawer Styles */
+
+// =============================================================================
+// VARIABLES
+// =============================================================================
+
+// Colors
+$drawer-bg-primary: #161616;
+$drawer-bg-secondary: #000000;
+$drawer-bg-hover: #2b2b2b;
+$drawer-text-primary: #ccc;
+$drawer-text-secondary: #fff;
+$drawer-border-color: #333;
+$drawer-divider-color: #333;
+
+// Toggle button colors
+$toggle-bg-transparent: rgba(0, 0, 0, 0);
+$toggle-bg-light: #fff;
+$toggle-bg-hover: #f8f9fa;
+$toggle-border-light: #dee2e6;
+$toggle-border-hover: #adb5bd;
+$toggle-text-muted: #6c757d;
+$toggle-text-hover: #495057;
+$toggle-focus-border: #86b7fe;
+$toggle-focus-shadow: rgba(13, 110, 253, 0.25);
+$toggle-focus-outline: #0d6efd;
+
+// Shadows
+$drawer-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+$list-group-shadow: rgb(0 0 0 / 5%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 6px, rgb(0 0 0 / 5%) 0 10px 20px;
+$toggle-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$toggle-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.15);
+$toggle-focus-shadow-inner: 0 0 0 0.125rem;
+
+// Spacing
+$navbar-height: 60px;
+$logo-height: 128px;
+$logo-padding-vertical: 15px;
+$logo-padding-horizontal: 20px;
+$list-group-padding-vertical: 5px;
+$list-group-padding-horizontal: 15px;
+$list-group-margin-top: 15px;
+$list-item-padding-vertical: 12px;
+$list-item-padding-horizontal: 15px;
+$list-item-margin-bottom: 2px;
+$list-item-icon-margin: 1.5em;
+$divider-margin: 0.5rem;
+$toggle-padding-vertical: 0.375rem;
+$toggle-padding-horizontal: 0.75rem;
+$toggle-icon-size: 1.25em;
+$toggle-content-padding: 0.5rem;
+$toggle-outline-offset: 2px;
+$drawer-width: 280px;
+
+// Border radius
+$list-group-border-radius: 5px;
+$list-item-border-radius: 5px;
+$toggle-border-radius: 4px;
+
+// Transitions
+$transition-duration: 0.2s;
+$transition-timing: ease;
+
+// Z-index values
+$drawer-z-index: 1040;
+$drawer-mobile-z-index: 1050;
+$course-index-z-index: 1041;
+
+// Breakpoints
+$mobile-breakpoint: 767.98px;
+
+// =============================================================================
+// NAVIGATION DRAWER STYLES
+// =============================================================================
+
+#theme_boost-drawers-navigation {
+    .drawer {
+        background-color: $drawer-bg-primary !important;
+        border-right: 1px solid $drawer-border-color;
+        box-shadow: $drawer-shadow;
+        color: $drawer-text-primary;
+        top: $navbar-height;
+        height: calc(100% - #{$navbar-height});
+    }
+
+    // Hide the close button and default header
+    .drawerheader {
+        background-color: $drawer-bg-primary !important;
+        
+        .drawertoggle,
+        .btn.drawertoggle,
+        button.drawertoggle {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        
+        .drawerheadercontent {
+            display: block !important; // Override the hidden class
+            padding: 0;
+            margin: 0;
+            background-color: $drawer-bg-primary !important;
+        }
+    }
+
+    // Force drawer content background to be dark
+    .drawercontent {
+        background-color: $drawer-bg-primary !important;
+    }
+
+    // UP Logo styling in drawer header
+    .uvle-drawer-logo {
+        padding: $logo-padding-vertical $logo-padding-horizontal;
+        text-align: center;
+        background-color: $drawer-bg-primary !important;
+        border-bottom: 1px solid $drawer-border-color;
+        
+        .up-logo {
+            height: $logo-height;
+            width: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; // Prevent overflow and maintain aspect ratio
+        }
+    }
+
+    .list-group {
+        box-shadow: $list-group-shadow;
+        padding: $list-group-padding-vertical $list-group-padding-horizontal;
+        font-size: 0.85em;
+        overflow: hidden;
+        border-radius: $list-group-border-radius;
+        background: $drawer-bg-secondary !important;
+        margin: $list-group-margin-top 0 0 0;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: $list-item-padding-vertical $list-item-padding-horizontal;
+        transition: all $transition-duration $transition-timing;
+        background-color: rgba(0, 0, 0, 0);
+        color: $drawer-text-primary;
+        border-radius: $list-item-border-radius;
+        margin-bottom: $list-item-margin-bottom;
+
+        &:hover {
+            background-color: $drawer-bg-hover;
+            color: $drawer-text-secondary;
+        }
+
+        &.active {
+            background-color: $up-maroon;
+            color: $drawer-text-secondary;
+            border: none;
+
+            &:hover {
+                background-color: darken($up-maroon, 5%);
+                color: $drawer-text-secondary;
+            }
+        }
+
+        .flex-shrink-0 {
+            color: $drawer-text-secondary;
+            margin-right: $list-item-icon-margin;
+            opacity: 1;
+        }
+
+        // Ensure proper text alignment and spacing
+        .d-flex.align-items-center {
+            width: 100%;
+        }
+
+        .flex-grow-1 {
+            padding-left: 0;
+        }
+    }
+
+    .list-group-divider {
+        height: 1px;
+        background-color: $drawer-divider-color;
+        margin: $divider-margin 0;
+    }
+}
+
+// =============================================================================
+// NAVIGATION TOGGLE BUTTON STYLES
+// =============================================================================
+
+.navbar {
+    [data-target="theme_boost-drawers-navigation"] {
+        background: $toggle-bg-transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: $toggle-padding-vertical $toggle-padding-horizontal;
+
+        // Hamburger icon styling
+        .navbar-toggler-icon {
+            width: $toggle-icon-size;
+            height: $toggle-icon-size;
+        }
+
+        &:focus {
+            box-shadow: none !important;
+            outline: 0;
+        }
+    }
+}
+
+// Drawer Toggle in Content Area - Consistent with Navbar Toggle
+.drawer-toggles {
+    .drawer-toggler {
+        [data-target="theme_boost-drawers-navigation"] {
+            background-color: $toggle-bg-light;
+            border: 1px solid $toggle-border-light;
+            color: $toggle-text-muted;
+            box-shadow: $toggle-shadow;
+            border-radius: $toggle-border-radius;
+            padding: $toggle-content-padding;
+            transition: all $transition-duration $transition-timing;
+
+            &:hover {
+                background-color: $toggle-bg-hover;
+                color: $toggle-text-hover;
+                border-color: $toggle-border-hover;
+                box-shadow: $toggle-shadow-hover;
+            }
+
+            &:focus {
+                box-shadow: $toggle-focus-shadow-inner $toggle-focus-shadow;
+                border-color: $toggle-focus-border;
+                outline: 0;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// RESPONSIVE BEHAVIOR
+// =============================================================================
+
+@media (max-width: $mobile-breakpoint) {
+    #theme_boost-drawers-navigation {
+        .drawer {
+            z-index: $drawer-mobile-z-index; // Ensure it's above other content on mobile
+        }
+    }
+
+    // Hide desktop toggle button on mobile
+    .navbar [data-target="theme_boost-drawers-navigation"] {
+        display: none !important;
+    }
+}
+
+// =============================================================================
+// ACCESSIBILITY IMPROVEMENTS
+// =============================================================================
+
+.drawer-toggler button[data-target="theme_boost-drawers-navigation"]:focus,
+.navbar button[data-target="theme_boost-drawers-navigation"]:focus {
+    outline: 2px solid $toggle-focus-outline;
+    outline-offset: $toggle-outline-offset;
+}
+
+// =============================================================================
+// DRAWER SYSTEM INTEGRATION
+// =============================================================================
+
+// Integration with existing drawer system
+.drawers.show-drawer-left {
+    #theme_boost-drawers-navigation.show ~ #page {
+        margin-left: $drawer-width; // Adjust based on drawer width
+    }
+}
+
+// Ensure proper stacking with course index drawer
+#theme_boost-drawers-navigation.drawer-left {
+    z-index: $drawer-z-index;
+}
+
+#theme_boost-drawers-courseindex.drawer-left {
+    z-index: $course-index-z-index; // Course index should be above navigation drawer
+}

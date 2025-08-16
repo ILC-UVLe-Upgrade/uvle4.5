@@ -15,86 +15,49 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/footer
-
     Page footer.
-
-    Example context (json):
-    {
-        "output": {
-            "page_doc_link": "Documentation for this page",
-            "supportemail": "<a href=\"#\">Contact site support</a>",
-            "has_popover_links": true,
-            "services_support": "Services and support",
-            "login_info": "You are logged in as cute kitten",
-            "moodle_release": "90210",
-            "has_communication_links": true,
-            "communication_url": "https://element:8081/#/room/#yourroom:synapse",
-            "communication_link": "<a href=\"#\">Communication room</a>"
-        }
-    }
 }}
-
-<footer id="page-footer" class="footer-popover bg-white">
-    <div data-region="footer-container-popover">
-        {{#output.has_communication_links}}
-            <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon bg-primary text-white icon-no-margin btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
-                {{#pix}}t/messages-o, core{{/pix}}
-            </button>
-        {{/output.has_communication_links}}
-        <button class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
-            {{#pix}}e/question, core{{/pix}}
-        </button>
-    </div>
-    <div class="footer-content-popover container" data-region="footer-content-popover">
-        {{#output.has_communication_links}}
-            <div class="footer-section p-3 border-bottom footer-link-communication">
-                <div class="footer-support-link">{{{ output.communication_link }}}</div>
+<div id="goto-top-link">
+    {{! go to top is sticky to footer so needs to be sibling }}
+    <a class="btn btn-light" role="button" href="#" aria-label="{{#str}} totop, theme_boost {{/str}}">
+        {{#pix}} i/up, core{{/pix}}
+    </a>
+</div>
+<footer id="page-footer" class="py-3 py-5 text-light">
+    <div class="container">
+        <div id="course-footer">{{{ output.course_footer }}}</div>
+        <div class="row">
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://ilc.upd.edu.ph/university-virtual-learning-environment">About UVLê</a></li>
+                    <li><a href="https://ilc.upd.edu.ph/about">ILC Diliman</a></li>
+                    <li><a href="https://helpdesk.ilc.upd.edu.ph/">Helpdesk</a></li>
+                </ul>
             </div>
-        {{/output.has_communication_links}}
-        {{# output.has_popover_links }}
-            <div class="footer-section p-3 border-bottom">
-                {{# output.page_doc_link }}
-                    <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
-                {{/ output.page_doc_link }}
-
-                {{# output.services_support_link }}
-                    <div class="footer-support-link">{{{ output.services_support_link }}}</div>
-                {{/ output.services_support_link }}
-
-                {{# output.supportemail }}
-                    <div class="footer-support-link">{{{ output.supportemail }}}</div>
-                {{/ output.supportemail }}
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://upd.edu.ph/aup/">Conference</a></li>
+                    <li><a href="https://iskwiki.upd.edu.ph/index.php/Main_Page">Iskomunidad</a></li>
+                </ul>
             </div>
-        {{/ output.has_popover_links }}
-        <div class="footer-section p-3 border-bottom">
-            <div class="logininfo">
-                {{{ output.login_info }}}
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://upd.edu.ph/aup/">Acceptable Use Policy</a></li>
+                    <li><a href="https://uvle.upd.edu.ph.dilc.info/local/privacy_notice.php">Privacy Notice</a></li>
+                </ul>
             </div>
-            <div class="tool_usertours-resettourcontainer">
+            <div class="col-6 copyright col-lg-3">
+                <p class="h1 p-0 m-0">
+                    UVLe
+                </p>
+                <p class="p-0 m-0 small">
+                    The University Virtual Learning Environment<br/>
+                    &copy; 2008-2021 ILC Diliman. Some rights reserved.<br/>
+                    Homepage images provided by UPDIO and Jefferson Villacruz
+                </p>
             </div>
-
-            {{{ output.standard_footer_html }}}
-            {{{ output.standard_end_of_body_html }}}
-        </div>
-        <div class="footer-section p-3">
-            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
-            {{#output.moodle_release}}
-                <div>
-                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
-                </div>
-            {{/output.moodle_release}}
         </div>
     </div>
-
-    <div class="footer-content-debugging footer-dark bg-dark text-light">
-        <div class="container-fluid footer-dark-inner">
-            {{{ output.debug_footer_html }}}
-        </div>
-    </div>
+    {{{ output.standard_end_of_body_html }}}
+    
 </footer>
-{{#js}}
-require(['theme_boost/footer-popover'], function(FooterPopover) {
-    FooterPopover.init();
-});
-{{/js}}

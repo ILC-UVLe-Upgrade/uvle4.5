@@ -1,0 +1,118 @@
+// UVLE Colors Module
+// Migrated for Moodle 4.x compatibility
+// UP brand colors and accessibility focus states
+
+// Breadcrumb links
+.breadcrumb {
+    .breadcrumb-item {
+        // Plaintext
+        color: $up-maroon;
+        a {
+            // Link
+            color: $up-maroon;
+        }
+    }
+    .breadcrumb-item::before {
+        color: $up-maroon;
+    }
+}
+
+// :focus Customization
+
+// Keyboard-triggered 
+body.show-focus-outlines {
+    :focus {
+        outline: .2rem solid #6b7c8d;
+        box-shadow: none;
+    }
+}
+
+// Mouse-triggered
+body:not(.show-focus-outlines) {
+    :not(input):not(.form-control):focus,
+    input[type="submit"]:focus {
+        outline: none;
+    }
+
+    .nav-link:focus,
+    .navbar-brand:focus,
+    input[type="checkbox"]:focus,
+    .mark-all-read-button,
+    [tabindex]:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .list-group-item:focus {
+        outline: none !important;
+        box-shadow: none !important;    
+    }
+
+    // Moodle 4.x: Additional focus states for new navigation elements
+    .primary-navigation .nav-link:focus,
+    .secondary-navigation .nav-link:focus,
+    .tertiary-navigation .nav-link:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.dropdown-item:hover > a, 
+.dropdown-item:focus > a,
+.dropdown-item > a {
+    color: $black !important;
+}
+
+.dropdown-item:focus {
+    color: $white;
+    background-color: $up-maroon;
+    outline: none !important;
+}
+
+// Workaround because can't edit core code
+.aalink.focus, 
+#page-footer a:not([class]).focus, 
+.arrow_link.focus, 
+a:not([class]).focus, 
+.activityinstance > a.focus, 
+.aalink:focus, 
+#page-footer a:not([class]):focus, 
+.arrow_link:focus, 
+a:not([class]):focus, 
+.activityinstance > a:focus {
+    background-color: $gray-300; 
+    color: $black;
+    box-shadow: none;
+}
+
+.btn:focus {
+    color: #212529;
+    background-color: #c1c9d0;
+    border-color: #bac2cb;
+    box-shadow: none;
+}
+
+nav .icon {
+    &:focus {
+        box-shadow: none !important;
+        background-color: $gray-300;
+    }
+    
+    &:hover {
+        box-shadow: none !important;
+        background-color: $gray-300;
+    }
+}
+
+// Moodle 4.x: Course index drawer focus states
+.drawer .list-group-item:focus {
+    background-color: $up-maroon;
+    color: $white;
+    outline: none !important;
+}
+
+// Moodle 4.x: More menu focus states
+.moremenu .nav-link:focus {
+    background-color: $gray-300;
+    outline: none !important;
+}

@@ -1,0 +1,52 @@
+// UVLE Icons Module
+// Migrated for Moodle 4.x compatibility
+// Icon sizing and styling adjustments
+
+// Make icons smaller
+.context-header-settings-menu .dropdown-toggle > .icon, 
+#region-main-settings-menu .dropdown-toggle > .icon {
+    height: 18px;
+    font-size: 18px;
+}
+
+.icon {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+}
+
+// Moodle 4.x: Course index icons
+.courseindex .icon {
+    font-size: 14px;
+    height: 14px;
+    width: 14px;
+}
+
+// Moodle 4.x: Navigation icons
+.primary-navigation .icon,
+.secondary-navigation .icon {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+}
+
+// Moodle 4.x: Activity icons
+.activity .icon {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    
+    &.activityicon {
+        // Activity type icons can be slightly larger
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+// Moodle 4.x: Drawer icons
+[data-region="drawer"] .icon {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+}

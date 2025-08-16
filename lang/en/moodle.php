@@ -1612,6 +1612,7 @@ $string['oldpassword'] = 'Current password';
 $string['olduserdirectory'] = 'This is the OLD users directory, and is no longer needed. You may safely delete it. The files it contains have been copied to the NEW user directory.';
 $string['opendrawerblocks'] = 'Open block drawer';
 $string['opendrawerindex'] = 'Open course index';
+$string['opendrawernav'] = 'Open navigation drawer';
 $string['opensinnewwindow'] = 'Opens in new window';
 $string['operator_and'] = 'and';
 $string['operator_andnot'] = 'and';

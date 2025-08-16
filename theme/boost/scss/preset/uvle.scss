@@ -1,0 +1,342 @@
+// UVLE Theme Preset for Moodle 4.x
+// Migrated from Moodle 3.9 UVLE theme
+// University of the Philippines Diliman
+
+// Start custom bootstrap and moodle override
+$up-maroon: #7b1113;
+$up-green: #014421;
+$up-yellow: #f3aa2c;
+
+$body-bg: #fefefe;
+$drawer-width: 280px;
+// End custom bootstrap and moodle override
+
+// Bootstrap variables
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #8f959e !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #0f6fc5 !default;
+$indigo:  #6610f2 !default;
+$purple:  #613d7c !default;
+$pink:    #e83e8c !default;
+$red:     #ca3120 !default;
+$orange:  #f0ad4e !default;
+$yellow:  #ff7518 !default;
+$green:   #357a32 !default;
+$teal:    #20c997 !default;
+$cyan:    #008196 !default;
+
+$primary:       $up-green !default;
+$success:       $up-green !default;
+$info:          $up-yellow !default;
+$warning:       $orange !default;
+$danger:        $up-maroon !default;
+$secondary:     $gray-300 !default;
+
+$info-outline:    #1f7e9a;
+$warning-outline: #a6670e;
+
+// Options
+$enable-rounded: true !default;
+$enable-responsive-font-sizes: true !default;
+
+// Body
+$body-color:    $gray-900 !default;
+
+// Fonts
+$font-family-sans-serif: Roboto, Helvetica, Arial, sans-serif;
+$headings-font-weight: 700;
+$font-size-base: 0.9375rem !default;
+$rfs-base-font-size: 0.9rem !default;
+
+// Navbar   
+$navbar-dark-hover-color:           rgba($white, 1) !default;
+$navbar-light-color:                rgba($black, 0.6) !default;
+$navbar-light-hover-color:          rgba($black, .9) !default;
+
+// Breadcrumbs
+$breadcrumb-padding-y:              .25rem !default;
+$breadcrumb-padding-x:              0 !default;
+$breadcrumb-item-padding:           .5rem !default;
+$breadcrumb-margin-bottom:          0 !default;
+$breadcrumb-bg:                     transparent !default;
+$breadcrumb-divider: "/" !default;
+$breadcrumb-divider-rtl: "/" !default;
+
+// Floating elements positions
+$gototop-bottom-position: 50px !default;
+
+// Alerts
+$alert-border-width:                0 !default;
+
+$card-group-margin: .25rem;
+
+// Custom control size
+$custom-control-indicator-size: 1rem;
+
+$input-btn-focus-color: rgba($primary, .75) !default;
+
+$input-border-color: $gray-500 !default;
+
+$dropdown-link-color: $black;
+$dropdown-link-hover-color: $black;
+$dropdown-link-hover-bg: $gray-300;
+$dropdown-link-active-color: $white;
+$dropdown-link-active-bg: $up-maroon;
+
+// stylelint-disable
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+), $theme-colors);
+// stylelint-enable
+
+$input-btn-font-size: 0.9em;
+$input-btn-font-size-sm: 0.85em;
+$input-btn-font-size-lg: 1.1em;
+
+// Import FontAwesome.
+@import "fontawesome";
+
+// Import All of Bootstrap
+@import "bootstrap";
+
+// Import Core moodle CSS - Updated for Moodle 4.x structure
+@import "moodle";
+
+// Preset CSS
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+}
+
+// Rounded user pictures
+.userpicture {
+    border-radius: 50%;
+}
+
+.btn-outline-secondary {
+    @include button-outline-variant($gray-600);
+    border-color: $gray-600;
+}
+
+.btn-outline-info {
+    @include button-outline-variant($info-outline);
+}
+
+.btn-outline-warning {
+    @include button-outline-variant($warning-outline);
+}
+
+@include bg-variant(".bg-gray", $gray-200, true);
+
+// Customizations
+
+.card-body h5 {
+    text-align: center;
+}
+
+// Home jumbotron:
+
+.jumbotron {
+    background-color: $up-maroon;
+    color: $white;
+}
+
+// User menu spacing fixes:
+
+.usertext {
+    margin-right: 10px !important;
+}
+
+// Front page cheats
+
+#announcements_box > div {
+    border-radius: .25rem !important;
+}
+
+#announcements_box .p-t-1.p-b-1 {
+    padding: 0px !important;
+}
+
+#announcements_box .forumpost {
+    border: 0 !important;
+}
+
+#announcements_box > div > article > div {
+    margin-bottom: 0px !important;
+}
+
+#announcements_box > .forumpost {
+    margin-bottom: 0px !important;
+}
+
+#announcements_box .forum-post-container {
+    margin-bottom: 0px !important;
+}
+
+#announcements_box .d-flex.flex-wrap {
+    display: none !important;
+}
+
+#announcements_box .link.text-right {
+    display: none !important;
+}
+
+// Hide site home
+a[data-key="home"] {
+    display: none !important;
+}
+
+// Navbar Notificications 
+.popover-region-toggle::after {
+    z-index: -999;
+}
+
+// Remove breadcrumb
+.breadcrumb {
+}
+
+#page-site-index {
+    background-color: #f8f9fa;
+
+    #homepage-header {
+        color: $up-green;
+    
+        background-image: url([[pix:theme|oblation_bright]]);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    
+        h1 {
+            color: $up-maroon;
+        }
+    }
+    
+    #homepage-announcements {
+        h2 {
+            color: $up-maroon;
+        }
+    
+    }
+    
+    #homepage-faq {
+        h2 {
+            color: $up-maroon;
+        }
+    
+        background-image: url([[pix:theme|homepage_faq_bg]]);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    
+    #homepage_sitename {
+        color: $up-green;
+    }
+    
+    #announcements_box {
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    
+    #faq_box {
+        border-radius: 5px;
+    }
+    
+    #homepage {
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #d6dee1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #d6dee1;
+            border-radius: 20px;
+            border: 6px solid transparent;
+            background-clip: content-box;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #a8bbbf;
+        }
+    }
+
+    .top-wave-divider {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+    }
+    
+    .top-wave-divider svg {
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 60px;
+    }
+    
+    .top-wave-divider .shape-fill {
+        fill: #f8f9fa;
+    }
+
+    .bottom-wave-divider {
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+    
+    .bottom-wave-divider svg {
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 60px;
+    }
+    
+    .bottom-wave-divider .shape-fill {
+        fill: #f8f9fa;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        box-shadow: 0 0 0 0 !important;
+    }
+}
+
+// Import UVLE custom modules
+@import "uvle/colors";
+@import "uvle/navbar";
+@import "uvle/layout";
+@import "uvle/navigation";
+@import "uvle/courses";
+@import "uvle/icons";
+@import "uvle/buttons";
+@import "uvle/select";
