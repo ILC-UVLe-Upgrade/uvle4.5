@@ -1,0 +1,453 @@
+// UVLE Theme Preset for Moodle 4.5
+// University of the Philippines Virtual Learning Environment
+
+// UP Brand Colors
+$up-maroon: #7b1113;
+$up-green: #014421;
+$up-yellow: #f3aa2c;
+
+// Bootstrap variables
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #8f959e !default;
+$gray-600: #6a737b !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #1d2125 !default;
+$black:    #000 !default;
+
+$blue:    #0f6cbf !default;
+$indigo:  #6610f2 !default;
+$purple:  #613d7c !default;
+$pink:    #db1a74 !default;
+$red:     #ca3120 !default;
+$orange:  #f0ad4e !default;
+$yellow:  #ff7518 !default;
+$green:   #357a32 !default;
+$teal:    #20c997 !default;
+$cyan:    #008196 !default;
+
+// UVLE Theme Colors
+$primary:       $up-green !default;
+$success:       $up-green !default;
+$info:          $up-yellow !default;
+$warning:       $orange !default;
+$danger:        $up-maroon !default;
+$secondary:     $gray-400 !default;
+
+$info-outline:    #1f7e9a;
+$warning-outline: #a6670e;
+
+// Tables
+$table-accent-bg:             rgba($black, .03) !default;
+
+// Options
+$enable-responsive-font-sizes: true !default;
+
+// Body
+$body-color:    $gray-900 !default;
+
+// Fonts
+$font-size-base: 0.9375rem !default;
+$rfs-base-font-size: 0.9rem !default;
+$headings-font-weight:   700 !default;
+
+// Navbar
+$navbar-dark-hover-color:           rgba($white, 1) !default;
+$navbar-light-color:                rgba($black, 0.6) !default;
+$navbar-light-hover-color:          rgba($black, .9) !default;
+
+// Breadcrumbs
+$breadcrumb-padding-y:              .5rem !default;
+$breadcrumb-padding-x:              0 !default;
+$breadcrumb-item-padding:           .5rem !default;
+$breadcrumb-margin-bottom:          0 !default;
+$breadcrumb-bg:                     transparent !default;
+$breadcrumb-divider: "/" !default;
+$breadcrumb-divider-rtl: "/" !default;
+
+// Alerts
+$alert-border-width:                0 !default;
+
+$card-group-margin: .25rem;
+
+// Toasts
+$toast-color:                       $white !default;
+$toast-background-color:            rgba($gray-900, .95) !default;
+$toast-header-color:                $gray-100 !default;
+$toast-header-background-color:     rgba($white, .1) !default;
+
+// Custom control size
+$custom-control-indicator-size: 1.25rem;
+
+$input-btn-focus-color: rgba($primary, .75) !default;
+
+$input-border-color: $gray-500 !default;
+
+$dropdown-link-hover-color: $white;
+$dropdown-link-hover-bg: $primary;
+$dropdown-link-active-color: $white;
+$dropdown-link-active-bg: $up-maroon;
+
+$popover-max-width: 300px !default;
+
+$border-radius: .5rem !default;
+$border-radius-lg: .6rem !default;
+
+// stylelint-disable
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+), $theme-colors);
+// stylelint-enable
+
+$spacer: 1rem !default;
+$spacers: (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 2),
+    6: ($spacer * 3)
+) !default;
+
+// Import FontAwesome.
+@import "fontawesome";
+
+// Import All of Bootstrap
+@import "bootstrap";
+
+// Import Core moodle CSS
+@import "moodle";
+
+// UVLE Preset CSS
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+}
+
+// Rounded user pictures
+.userpicture {
+    border-radius: 50%;
+}
+
+// Reset the default styling back to the bootstrap defaults for
+// the secondary outline button because gray-200 is much too light
+// for an outline button.
+.btn-outline-secondary {
+    @include button-outline-variant($gray-600);
+    border-color: $gray-600;
+}
+
+.btn-outline-info {
+    @include button-outline-variant($info-outline);
+}
+
+.btn-outline-warning {
+    @include button-outline-variant($warning-outline);
+}
+
+// UVLE Customizations
+
+// // Force primary buttons and links to use UP maroon
+// .btn-primary {
+//     background-color: $up-maroon !important;
+//     border-color: $up-maroon !important;
+//     &:hover, &:focus, &:active {
+//         background-color: darken($up-maroon, 10%) !important;
+//         border-color: darken($up-maroon, 10%) !important;
+//     }
+// }
+
+// // Force links to use UP maroon
+// a:not(.btn):not(.dropdown-item) {
+//     color: $up-maroon !important;
+//     &:hover, &:focus {
+//         color: darken($up-maroon, 10%) !important;
+//     }
+// }
+
+// // Force navigation links to use UP maroon
+// .nav-link {
+//     color: $up-maroon !important;
+//     &:hover, &:focus {
+//         color: darken($up-maroon, 10%) !important;
+//     }
+// }
+
+// // Force course links to use UP maroon
+// .coursebox .courseboxname a,
+// .coursebox .courseboxname a:visited,
+// .coursebox .courseboxname a:hover,
+// .coursebox .courseboxname a:focus {
+//     color: $up-maroon !important;
+// }
+
+// // Card headings in UP maroon
+// .card {
+//     h1, h2, h3, h4, h5 {
+//         color: $up-maroon;
+//     }
+// }
+
+// // Footer with UP maroon background
+// #page-footer {
+//     background: $up-maroon;
+//     ul.footer-links {
+//         font-size: 0.85em;
+//         list-style-type: none;
+//         padding: 0;
+//         margin: 0;
+//         li {
+//             a {
+//                 font-weight: bold;
+//                 text-decoration: none;
+//                 color: rgba(255, 255, 255, 0.8);
+//             }
+//             margin-bottom: 8px;
+//         }
+//     }
+// }
+
+// // Breadcrumb links in UP maroon
+// .breadcrumb {
+//     .breadcrumb-item {
+//         color: $up-maroon;
+//         a {
+//             color: $up-maroon;
+//         }
+//     }
+//     .breadcrumb-item::before {
+//         color: $up-maroon;
+//     }
+// }
+
+// // Focus states customization
+// body.show-focus-outlines {
+//     :focus {
+//         outline: .2rem solid #6b7c8d;
+//         box-shadow: none;
+//     }
+// }
+
+// body:not(.show-focus-outlines) {
+//     :not(input):not(.form-control):focus,
+//     input[type="submit"]:focus {
+//         outline: none;
+//     }
+
+//     .nav-link:focus,
+//     .navbar-brand:focus,
+//     input[type="checkbox"]:focus,
+//     .mark-all-read-button,
+//     [tabindex]:focus {
+//         outline: none !important;
+//         box-shadow: none !important;
+//     }
+
+//     .list-group-item:focus {
+//         outline: none !important;
+//         box-shadow: none !important;    
+//     }
+// }
+
+// // Dropdown focus states
+// .dropdown-item:hover > a, 
+// .dropdown-item:focus > a,
+// .dropdown-item > a {
+//     color: $black !important;
+// }
+
+// .dropdown-item:focus {
+//     color: $white;
+//     background-color: $up-maroon;
+//     outline: none !important;
+// }
+
+// // Link focus workaround
+// .aalink.focus, 
+// #page-footer a:not([class]).focus, 
+// .arrow_link.focus, 
+// a:not([class]).focus, 
+// .activityinstance > a.focus, 
+// .aalink:focus, 
+// #page-footer a:not([class]):focus, 
+// .arrow_link:focus, 
+// a:not([class]):focus, 
+// .activityinstance > a:focus {
+//     background-color: $gray-300; 
+//     color: $black;
+//     box-shadow: none;
+// }
+
+// .btn:focus {
+//     color: #212529;
+//     background-color: #c1c9d0;
+//     border-color: #bac2cb;
+//     box-shadow: none;
+// }
+
+// // Navigation icon focus states
+// nav .icon {
+//     &:focus {
+//         box-shadow: none !important;
+//         background-color: $gray-300;
+//     }
+    
+//     &:hover {
+//         box-shadow: none !important;
+//         background-color: $gray-300;
+//     }
+// }
+
+// // Hide header on home page
+// #page-site-index #page-header {
+//     display: none;
+// }
+
+// // Remove border around main content
+// @include media-breakpoint-up(sm) {
+//     #region-main {
+//         border: 0;
+//     }
+// }
+
+// // Page header card styling
+// #page-header {
+//     .card {
+//         border: 0;
+//     }
+// }
+
+// // Card shadows and styling
+// #region-main, .block-region {
+//     overflow: visible;
+//     .card {
+//         box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+//         border: 0;
+//     }
+//     .block.card.block_with_controls {
+//         border: 1px solid #ccc;
+//     }
+// }
+
+// // Breadcrumb spacing fix
+// nav > ol.breadcrumb {
+//     padding-left: 4px;
+// }
+
+// // Profile page layout adjustments
+// body.path-user {
+//     div.page-header-headings > h1 {
+//         font-size: 1.5em;
+//     }
+//     div.page-header-image {
+//         margin: 0; 
+//         padding: 0;
+//         & > a > img {
+//             height: 50px;
+//             width: 50px;
+//         }
+//     }
+//     div.page-context-header {
+//         display: flex;
+//         align-items: center;
+//     }
+//     #fitem_id_files_filemanager {
+//         div.col-form-label {
+//             display: none !important;
+//         }
+//     }
+// }
+
+// body.path-my {
+//     div.card-body {
+//         margin: 0; 
+//         padding: 0;
+//     }
+// }
+
+// // Icon sizing
+// .context-header-settings-menu .dropdown-toggle > .icon, 
+// #region-main-settings-menu .dropdown-toggle > .icon {
+//     height: 18px;
+//     font-size: 18px;
+// }
+
+// .icon {
+//     font-size: 16px;
+//     height: 16px;
+//     width: 16px;
+// }
+
+// // Select element padding
+// option {
+//     padding: 5px 5px 5px 5px;
+// }
+
+// // Button styling
+// $btn-normal-inset: 4px;
+// $btn-hover-inset: 2px;
+// @each $color, $value in $theme-colors {
+//   .btn-#{$color}:not(.homepage-btn) {
+//     position: relative;
+//     top: -2px;
+//     transition: all 40ms linear;
+//   }
+// }
+
+// // Course page specific styles
+// body.editing .aalink {
+//     pointer-events: none;
+// }
+
+// body.editing .aalink > span.quickediticon {
+//     pointer-events: auto;
+// }
+
+// // Enroll users button styling
+// div[data-table-uniqueid ^='user-index-participants-'] {
+//     justify-content: flex-start !important;
+// }
+
+// form[id ^= 'enrolusersbutton'] > div > input[type="submit"] {
+//     font-size: 1.5em;
+// }
+
+// // Announcement block styling
+// .block_news_items {
+//     li.post {
+//         padding: 5px 0;
+//         display: flex;
+//         flex-direction: column;
+//         div.info {
+//             order: -1;
+//             font-weight: bold;
+//         }
+//         div.head {
+//             display: flex;
+//             font-size: 0.9em;
+//             div.name {
+//                 order: -1;
+//                 margin-right: 5px;
+//                 &:after {
+//                     content:","
+//                 }
+//             }
+//         }
+//     }
+// }
