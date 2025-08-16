@@ -356,6 +356,12 @@ a[data-key="home"] {
     z-index: 1;
 }
 
+// [UVLE] - Login page background override
+.pagelayout-login #page {
+    background-color: $body-bg !important;
+    background-image: none !important;
+}
+
 // Import UVLE custom modules
 @import "uvle/colors";
 @import "uvle/navbar";

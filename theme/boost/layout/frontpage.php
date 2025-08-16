@@ -16,47 +16,96 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// // Get the HTML for the frontpage.
-// $bodyattributes = $OUTPUT->body_attributes();
+require_once($CFG->libdir . '/behat/lib.php');
+
+// Site news functionality from Moodle 3.9 homepage.php
+function frontpage_part($skipdivid, $contentsdivid, $header, $contents) {
+    if (strval($contents) === '') {
+        return '';
+    }
+
+    $output = $contents;
+
+    return $output;
+}
+
+function frontpage_news($forum) {
+    global $CFG, $SITE, $SESSION, $USER;
+    require_once($CFG->dirroot .'/mod/forum/lib.php');
+
+    $output = '';
+
+    $coursemodule = get_coursemodule_from_instance('forum', $forum->id);
+    $context = context_module::instance($coursemodule->id);
+
+    $entityfactory = mod_forum\local\container::get_entity_factory();
+    $forumentity = $entityfactory->get_forum_from_stdclass($forum, $context, $coursemodule, $SITE);
+
+    $rendererfactory = mod_forum\local\container::get_renderer_factory();
+    $discussionsrenderer = $rendererfactory->get_frontpage_news_discussion_list_renderer($forumentity);
+    $cm = \cm_info::create($coursemodule);
+
+    return $output . $discussionsrenderer->render($USER, $cm, null, null, 0, $SITE->newsitems);
+}
+
+// Process site news
+$sitenews = '';
+require_once($CFG->dirroot .'/mod/forum/lib.php');
+if (($newsforum = forum_get_course_forum($SITE->id, 'news')) &&
+($forumcontents = frontpage_news($newsforum))) {
+    $newsforumcm = get_fast_modinfo($SITE)->instances['forum'][$newsforum->id];
+    $sitenews = frontpage_part('skipsitenews', 'site-news-forum', $newsforumcm->get_formatted_name(), $forumcontents);
+}
+
+// Add block button in editing mode.
+$addblockbutton = $OUTPUT->addblockbutton();
+
+$extraclasses = [];
+$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+$blockshtml = $OUTPUT->blocks('side-pre');
+$hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbutton));
+
+$secondarynavigation = false;
+$overflow = '';
+if ($PAGE->has_secondary_navigation()) {
+    $tablistnav = $PAGE->has_tablist_secondary_navigation();
+    $moremenu = new \core\navigation\output\more_menu($PAGE->secondarynav, 'nav-tabs', true, $tablistnav);
+    $secondarynavigation = $moremenu->export_for_template($OUTPUT);
+    $overflowdata = $PAGE->secondarynav->get_overflow_menu_data();
+    if (!is_null($overflowdata)) {
+        $overflow = $overflowdata->export_for_template($OUTPUT);
+    }
+}
+
+$primary = new core\navigation\output\primary($PAGE);
+$renderer = $PAGE->get_renderer('core');
+$primarymenu = $primary->export_for_template($renderer);
+$buildregionmainsettings = !$PAGE->include_region_main_settings_in_header_actions()  && !$PAGE->has_secondary_navigation();
+// If the settings menu will be included in the header then don't add it here.
+$regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settings_menu() : false;
+
+$header = $PAGE->activityheader;
+$headercontent = $header->export_for_template($renderer);
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
-    'bodyattributes' => $bodyattributes,
-    // 'hasdrawer' => true,
-    // 'draweropen' => false,
-    // 'regionmainsettingsmenu' => $regionmainsettingsmenu,
-    // 'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-    // 'isloggedin' => isloggedin(),
-    // 'isguestuser' => isguestuser(),
-    // 'loginurl' => get_login_url(),
-    // 'signupurl' => new moodle_url('/login/signup.php'),
-    // 'sitenews' => '',
-    // 'faq' => [],
-    // 'carousel_slides' => []
+    'sidepreblocks' => $blockshtml,
+    'hasblocks' => $hasblocks,
+    // 'bodyattributes' => $bodyattributes,
+    // 'primarymoremenu' => $primarymenu['moremenu'],
+    // 'secondarymoremenu' => $secondarynavigation ?: false,
+    // 'mobileprimarynav' => $primarymenu['mobileprimarynav'],
+    'usermenu' => $primarymenu['user'],
+    'langmenu' => $primarymenu['lang'],
+    'regionmainsettingsmenu' => $regionmainsettingsmenu,
+    'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
+    'headercontent' => $headercontent,
+    'overflow' => $overflow,
+    'addblockbutton' => $addblockbutton,
+    'sitenews' => $sitenews,
+    'loginurl' => get_login_url(),
+    'isloggedin' => isloggedin(),
 ];
-
-// // Add site news if available
-// // if ($SITE->newsitems) {
-// //     require_once($CFG->dirroot .'/mod/forum/lib.php');
-// //     if (($newsforum = forum_get_course_forum($SITE->id, 'news'))) {
-// //         $newsforumcm = get_fast_modinfo($SITE)->instances['forum'][$newsforum->id];
-// //         // For now, we'll just show a simple message about news availability
-// //         $templatecontext['sitenews'] = '<p>Site announcements and news are available. Please log in to view the latest updates.</p>';
-// //     }
-// // }
-
-// // Add FAQ items (placeholder for now)
-// $templatecontext['faq'] = [
-//     ['question' => 'How do I create an account?', 'link' => '#'],
-//     ['question' => 'How do I enroll in a course?', 'link' => '#'],
-//     ['question' => 'How do I access my courses?', 'link' => '#'],
-//     ['question' => 'How do I contact support?', 'link' => '#']
-// ];
-
-// // Add carousel slides (placeholder for now)
-// $templatecontext['carousel_slides'] = [
-//     ['title' => 'Welcome to UVLE', 'description' => 'Your virtual learning environment', 'image' => ''],
-//     ['title' => 'Start Learning', 'description' => 'Explore our courses and begin your journey', 'image' => '']
-// ];
 
 echo $OUTPUT->render_from_template('theme_boost/frontpage', $templatecontext);
