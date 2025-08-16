@@ -1,0 +1,190 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_boost/frontpage
+
+    Frontpage template for logged-out users
+
+    Example context (json):
+    {
+        "sitename": "UVLE",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "UVLE - Home",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Welcome to UVLE</h1>"
+        },
+        "isloggedin": false,
+        "loginurl": "/login/index.php",
+        "signupurl": "/login/signup.php",
+        "sitenews": "<div>News content</div>",
+        "faq": [
+            {"question": "How do I create an account?", "link": "#"},
+            {"question": "How do I enroll in a course?", "link": "#"}
+        ],
+        "carousel_slides": [
+            {"title": "Welcome to UVLE", "description": "Your virtual learning environment", "image": ""}
+        ]
+    }
+}}
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    <div id="page" class="container-fluid">
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <div id="region-main" class="col-12 h-100">
+                    <!-- Main Content -->
+                    <div class="container">
+                        <div class="row">
+                            <!-- Left Column - Main Content -->
+                            <div class="col-lg-8">
+                                
+                                <!-- Site News Section -->
+                                {{# sitenews }}
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">
+                                            <i class="fa fa-newspaper-o me-2"></i>Announcements
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        {{{ sitenews }}}
+                                    </div>
+                                </div>
+                                {{/ sitenews }}
+
+                                <!-- Welcome Message -->
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h3>Welcome to {{{ sitename }}}</h3>
+                                        <p>This is your virtual learning environment where you can access courses, interact with instructors and fellow students, and engage in meaningful learning experiences.</p>
+                                        <p>Whether you're a student looking to expand your knowledge or an instructor ready to share your expertise, UVLE provides the tools and platform you need to succeed.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Features Section -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body text-center">
+                                                <i class="fa fa-book fa-3x text-primary mb-3"></i>
+                                                <h5 class="card-title">Access Courses</h5>
+                                                <p class="card-text">Browse and enroll in a wide variety of courses across different subjects and disciplines.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body text-center">
+                                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                                <h5 class="card-title">Connect & Collaborate</h5>
+                                                <p class="card-text">Interact with instructors and fellow students through forums, discussions, and collaborative activities.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Right Column - Sidebar -->
+                            <div class="col-lg-4">
+                                
+                                <!-- Quick Actions -->
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Quick Actions</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {{^ isloggedin }}
+                                        <a href="{{{ loginurl }}}" class="btn btn-primary w-100 mb-2">
+                                            <i class="fa fa-sign-in me-2"></i>Login to Your Account
+                                        </a>
+                                        <a href="{{{ signupurl }}}" class="btn btn-outline-primary w-100 mb-2">
+                                            <i class="fa fa-user-plus me-2"></i>Create New Account
+                                        </a>
+                                        {{/ isloggedin }}
+                                        <a href="#" class="btn btn-outline-secondary w-100 mb-2">
+                                            <i class="fa fa-search me-2"></i>Browse Courses
+                                        </a>
+                                        <a href="#" class="btn btn-outline-secondary w-100">
+                                            <i class="fa fa-question-circle me-2"></i>Get Help
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- FAQ Section -->
+                                {{# faq }}
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Frequently Asked Questions</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="list-group list-group-flush">
+                                            {{# faq }}
+                                            <a href="{{{ link }}}" class="list-group-item list-group-item-action">
+                                                <i class="fa fa-question-circle me-2 text-muted"></i>{{{ question }}}
+                                            </a>
+                                            {{/ faq }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/ faq }}
+
+                                <!-- Contact Information -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Need Help?</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-2">
+                                            <i class="fa fa-envelope me-2 text-muted"></i>
+                                            <a href="mailto:support@uvle.edu.ph">support@uvle.edu.ph</a>
+                                        </p>
+                                        <p class="mb-0">
+                                            <i class="fa fa-phone me-2 text-muted"></i>
+                                            <a href="tel:+6321234567">+63 2 123 4567</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{> theme_boost/footer }}
+</div>
+
+</body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
+{{/js}}

@@ -135,6 +135,11 @@ nav > ol.breadcrumb {
     background-color: $gray-300 !important;
 }
 
+// [UVLE] - Hide home link from navigation drawer
+.nav li[data-key="home"] { display: none !important; }
+// [UVLE] - Hide user tour shit
+#resetpagetour { display: none !important; }
+
 // PROFILE LAYOUTS
 
 body.path-user {
