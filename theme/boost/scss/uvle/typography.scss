@@ -1,0 +1,56 @@
+// UVLE Typography Module
+// Migrated for Moodle 4.x compatibility
+// Header gradient styling
+
+// Define UP maroon gradient
+$up-maroon-light: lighten($up-maroon, 15%);
+$up-maroon-gradient: linear-gradient(135deg, $up-maroon 0%, $up-maroon-light 50%, $up-maroon 100%);
+
+// Page header gradient styling
+.page-context-header {
+    .page-header-headings {
+        h1, h2, h3, h4, h5, h6 {
+            background: $up-maroon-gradient;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+        }
+    }
+}
+
+// Specific styling for the Dashboard header example
+.page-context-header .page-header-headings .h2 {
+    background: $up-maroon-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+}
+
+// Additional header classes that might be used
+.page-header-headings h1,
+.page-header-headings h2,
+.page-header-headings h3,
+.page-header-headings h4,
+.page-header-headings h5,
+.page-header-headings h6 {
+    background: $up-maroon-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+}
+
+// Fallback for browsers that don't support background-clip
+@supports not (-webkit-background-clip: text) {
+    .page-context-header .page-header-headings h1,
+    .page-context-header .page-header-headings h2,
+    .page-context-header .page-header-headings h3,
+    .page-context-header .page-header-headings h4,
+    .page-context-header .page-header-headings h5,
+    .page-context-header .page-header-headings h6 {
+        color: $up-maroon;
+        text-shadow: 0 0 10px rgba($up-maroon, 0.3);
+    }
+}
