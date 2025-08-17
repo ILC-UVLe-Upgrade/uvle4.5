@@ -104,12 +104,7 @@ nav .icon {
     }
 }
 
-// Moodle 4.x: Course index drawer focus states
-.drawer .list-group-item:focus {
-    background-color: $up-maroon;
-    color: $white;
-    outline: none !important;
-}
+// Moodle 4.x: Course index drawer focus states (moved to drawer.scss)
 
 // Moodle 4.x: More menu focus states
 .moremenu .nav-link:focus {

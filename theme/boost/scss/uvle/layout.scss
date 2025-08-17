@@ -106,18 +106,6 @@ nav > ol.breadcrumb {
     }
 }
 
-// Moodle 4.x: Course index layout adaptations
-.courseindex {
-    .list-group-item {
-        border-color: rgba($up-maroon, 0.2);
-        
-        &.active {
-            background-color: rgba($up-maroon, 0.1);
-            border-color: $up-maroon;
-        }
-    }
-}
-
 // Moodle 4.x: Activity navigation layout
 .activity-navigation {
     .btn {
@@ -129,10 +117,6 @@ nav > ol.breadcrumb {
             color: $white;
         }
     }
-}
-
-.drawer {
-    background-color: $gray-300 !important;
 }
 
 // [UVLE] - Hide home link from navigation drawer

@@ -2,80 +2,9 @@
 // Migrated for Moodle 4.x with primary/secondary navigation support
 // UP brand navbar and drawer styling
 
-// Legacy drawer support (still used in some contexts)
-#nav-drawer {
-    &.closed {
-        left: -100%;
-    }
-}
-
-// Main drawer styling - updated for Moodle 4.x
-[data-region="drawer"] {
-    background: #161616;
-    top: $fixed-header-y;
-    height: calc(100% - #{$navbar-height});
-    padding: $drawer-padding-x $drawer-padding-y;
-    width: 100%;
-    
-    .list-group {
-        box-shadow: rgb(0 0 0 / 5%) 0 1px 0, rgb(0 0 0 / 5%) 0 2px 6px, rgb(0 0 0 / 5%) 0 10px 20px;
-        padding: 5px;
-        font-size: 0.85em;
-        overflow: hidden;
-        border-radius: 5px; 
-        background: #000000;
-        
-        a.list-group-item, div.list-group-item {
-            padding: 10px 20px;
-            color: #ccc;
-            background: rgba(0,0,0,0);
-            border-radius: 5px;
-            
-            i.icon {
-                color: #fff;
-                margin-right: 1.5em;
-            }
-            
-            &.active {
-                border: none;
-                background: $up-maroon;
-                color: #fff;
-            }
-            
-            &:hover {
-                background: #2b2b2b;
-                color: #fff;
-            }
-        }
-    }
-}
-
-// Moodle 4.x: Course index drawer styling
-[data-region="courseindex"] {
-    .list-group-item {
-        &.active {
-            background-color: $up-maroon;
-            border-color: $up-maroon;
-            color: $white;
-        }
-        
-        &:hover {
-            background-color: rgba($up-maroon, 0.1);
-        }
-    }
-}
-
-@include media-breakpoint-up(sm) {
-    [data-region="drawer"] {
-        width: $drawer-width;
-    }
-    
-    #nav-drawer {
-        &.closed {
-            left: -($drawer-width + $drawer-offscreen-gutter);
-        }
-    }
-}
+// Legacy drawer support (moved to drawer.scss)
+// Main drawer styling (moved to drawer.scss)
+// Course index drawer styling (moved to drawer.scss)
 
 // Primary navigation styling for Moodle 4.x
 .primary-navigation {
