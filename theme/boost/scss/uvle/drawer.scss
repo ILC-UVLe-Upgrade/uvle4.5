@@ -266,6 +266,114 @@
                 }
             }
         }
+        
+        // List group navigation styling (for legacy drawer items)
+        .list-group {
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: transparent;
+            
+            .list-group-item {
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0.75rem 1rem;
+                color: $white !important;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                position: relative;
+                
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1) !important;
+                    color: $white !important;
+                    text-decoration: none;
+                }
+                
+                &:focus {
+                    outline: 2px solid rgba(255, 255, 255, 0.5);
+                    outline-offset: 2px;
+                    border-radius: 4px;
+                    background: rgba(255, 255, 255, 0.1) !important;
+                }
+                
+                // Active state styling
+                &.active {
+                    background: $up-green !important;
+                    color: $white !important;
+                    font-weight: 600;
+                    
+                    &:hover {
+                        background: darken($up-green, 5%) !important;
+                        color: $white !important;
+                    }
+                }
+                
+                // Collapsible section styling
+                &.icons-collapse-expand {
+                    background: rgba(0, 0, 0, 0.1);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.15) !important;
+                    }
+                    
+                    // Chevron icon styling
+                    .expanded-icon,
+                    .collapsed-icon {
+                        .icon {
+                            color: $white;
+                            opacity: 0.8;
+                            transition: all 0.2s ease;
+                        }
+                    }
+                    
+                    &:hover .expanded-icon .icon,
+                    &:hover .collapsed-icon .icon {
+                        opacity: 1;
+                        transform: scale(1.1);
+                    }
+                }
+                
+                // Nested items styling (with ps-5 class)
+                &.ps-5 {
+                    background: rgba(0, 0, 0, 0.05) !important;
+                    padding-left: 2.5rem !important;
+                    font-weight: 400;
+                    color: rgba(255, 255, 255, 0.9) !important;
+                    
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.1) !important;
+                        color: $white !important;
+                    }
+                    
+                    // Active state for nested items
+                    &.active {
+                        background: rgba(255, 255, 255, 0.1) !important;
+                        border-left: 3px solid $up-green;
+                        color: $white !important;
+                        font-weight: 500;
+                        
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.15) !important;
+                        }
+                    }
+                }
+            }
+            
+            // Collapse container styling
+            .collapse {
+                background: rgba(0, 0, 0, 0.05);
+                border: none;
+                border-radius: 0;
+                
+                .list-group-item {
+                    border: none;
+                    border-radius: 0;
+                }
+            }
+        }
     }
 }
 
