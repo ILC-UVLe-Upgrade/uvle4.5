@@ -35,64 +35,62 @@
     }
 }}
 
-<footer id="page-footer" class="footer-popover bg-white">
-    <div data-region="footer-container-popover">
-        {{#output.has_communication_links}}
-            <button onclick="window.open('{{output.communication_url}}', '_blank', 'noreferrer')" class="btn btn-icon bg-primary text-white icon-no-margin btn-footer-communication" aria-label="{{#str}}communicationroomlink, course{{/str}}">
-                {{#pix}}t/messages-o, core{{/pix}}
-            </button>
-        {{/output.has_communication_links}}
-        <button class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
-            {{#pix}}e/question, core{{/pix}}
-        </button>
-    </div>
-    <div class="footer-content-popover container" data-region="footer-content-popover">
-        {{#output.has_communication_links}}
-            <div class="footer-section p-3 border-bottom footer-link-communication">
-                <div class="footer-support-link">{{{ output.communication_link }}}</div>
-            </div>
-        {{/output.has_communication_links}}
-        {{# output.has_popover_links }}
-            <div class="footer-section p-3 border-bottom">
-                {{# output.page_doc_link }}
-                    <div class="footer-support-link">{{{ output.page_doc_link }}}</div>
-                {{/ output.page_doc_link }}
+<!-- Wavy SVG Transition -->
+<div class="footer-wave-transition">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave-svg">
+        <!-- Main wave -->
+        <path d="M0,120V73.71c47.79-22.2,103.59-32.17,158-28,70.36,5.37,136.33,33.31,206.8,37.5C438.64,87.57,512.34,66.33,583,47.95c69.27-18,138.3-24.88,209.4-13.08,36.15,6,69.85,17.84,104.45,29.34C989.49,95,1113,134.29,1200,67.53V120Z" 
+              opacity=".25" 
+              fill="#7b1113"></path>
+        <!-- Secondary wave -->
+        <path d="M0,120V104.19C13,83.08,27.64,63.14,47.69,47.95,99.41,8.73,165,9,224.58,28.42c31.15,10.15,60.09,26.07,89.67,39.8,40.92,19,84.73,46,130.83,49.67,36.26,2.85,70.9-9.42,98.6-31.56,31.77-25.39,62.32-62,103.63-73,40.44-10.79,81.35,6.69,119.13,24.28s75.16,39,116.92,43.05c59.73,5.85,113.28-22.88,168.9-38.84,30.2-8.66,59-6.17,87.09,7.5,22.43,10.89,48,26.93,60.65,49.24V120Z" 
+              opacity=".5" 
+              fill="#7b1113"></path>
+        <!-- Primary wave -->
+        <path d="M0,120V114.37C149.93,61,314.09,48.68,475.83,77.43c43,7.64,84.23,20.12,127.61,26.46,59,8.63,112.48-12.24,165.56-35.4C827.93,42.78,886,24.76,951.2,30c86.53,7,172.46,45.71,248.8,84.81V120Z" 
+              fill="#7b1113"></path>
+    </svg>
+</div>
 
-                {{# output.services_support_link }}
-                    <div class="footer-support-link">{{{ output.services_support_link }}}</div>
-                {{/ output.services_support_link }}
-
-                {{# output.supportemail }}
-                    <div class="footer-support-link">{{{ output.supportemail }}}</div>
-                {{/ output.supportemail }}
+<footer id="page-footer" class="py-3 py-5 text-light">
+    <div class="container">
+        <div id="course-footer">{{{ output.course_footer }}}</div>
+        <div class="row">
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://ilc.upd.edu.ph/university-virtual-learning-environment">About UVLê</a></li>
+                    <li><a href="https://ilc.upd.edu.ph/about">ILC Diliman</a></li>
+                    <li><a href="https://helpdesk.ilc.upd.edu.ph/">Helpdesk</a></li>
+                </ul>
             </div>
-        {{/ output.has_popover_links }}
-        <div class="footer-section p-3 border-bottom">
-            <div class="logininfo">
-                {{{ output.login_info }}}
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://upd.edu.ph/aup/">Conference</a></li>
+                    <li><a href="https://iskwiki.upd.edu.ph/index.php/Main_Page">Iskomunidad</a></li>
+                </ul>
             </div>
-            <div class="tool_usertours-resettourcontainer">
+            <div class="col-6 col-lg-3">
+                <ul class="footer-links">
+                    <li><a href="https://upd.edu.ph/aup/">Acceptable Use Policy</a></li>
+                    <li><a href="https://uvle.upd.edu.ph.dilc.info/local/privacy_notice.php">Privacy Notice</a></li>
+                </ul>
             </div>
-
-            {{{ output.standard_footer_html }}}
-            {{{ output.standard_end_of_body_html }}}
-        </div>
-        <div class="footer-section p-3">
-            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
-            {{#output.moodle_release}}
-                <div>
-                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
-                </div>
-            {{/output.moodle_release}}
-        </div>
-    </div>
-
-    <div class="footer-content-debugging footer-dark bg-dark text-light">
-        <div class="container-fluid footer-dark-inner">
-            {{{ output.debug_footer_html }}}
+            <div class="col-6 copyright col-lg-3">
+                <p class="h1 p-0 m-0">
+                    UVLe
+                </p>
+                <p class="p-0 m-0 small">
+                    The University Virtual Learning Environment<br/>
+                    &copy; 2008-2021 ILC Diliman. Some rights reserved.<br/>
+                    Homepage images provided by UPDIO and Jefferson Villacruz
+                </p>
+            </div>
         </div>
     </div>
+
+    {{{ output.standard_end_of_body_html }}}
 </footer>
+
 {{#js}}
 require(['theme_boost/footer-popover'], function(FooterPopover) {
     FooterPopover.init();

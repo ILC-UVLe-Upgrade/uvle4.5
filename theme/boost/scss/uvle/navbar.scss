@@ -1,0 +1,102 @@
+// UVLE Navbar Module
+// Migrated for Moodle 4.x with primary/secondary navigation support
+// UP brand navbar and drawer styling
+
+// Legacy drawer support (moved to drawer.scss)
+// Main drawer styling (moved to drawer.scss)
+// Course index drawer styling (moved to drawer.scss)
+
+// Primary navigation styling for Moodle 4.x
+.primary-navigation {
+    .nav-link {
+        &.active {
+            color: $up-maroon;
+            font-weight: bold;
+        }
+        
+        &:hover {
+            color: $up-maroon;
+        }
+    }
+}
+
+// Secondary navigation styling for Moodle 4.x
+.secondary-navigation {
+    .nav-link {
+        &.active {
+            color: $up-maroon;
+            border-bottom-color: $up-maroon;
+        }
+        
+        &:hover {
+            color: $up-maroon;
+        }
+    }
+}
+
+// Tertiary navigation styling for Moodle 4.x
+.tertiary-navigation {
+    .nav-link {
+        &.active {
+            background-color: $up-maroon;
+            color: $white;
+        }
+        
+        &:hover {
+            background-color: rgba($up-maroon, 0.1);
+        }
+    }
+}
+
+nav.navbar {
+    // This is the expand/retract navbar drawer button
+    [aria-controls="nav-drawer"] {
+        background: rgba(0,0,0,0) !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    // Moodle 4.x: Primary navigation toggle button styling
+    .primary-navigation-toggle {
+        background: rgba(0,0,0,0) !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    // UVLE Logo styling
+    .uvle-logo {
+        height: 30px;
+        width: auto;
+        max-width: 120px;
+        object-fit: contain;
+        vertical-align: middle;
+        
+        // Ensure proper alignment with site title
+        margin-left: 0.75rem;
+        
+        // Responsive adjustments
+        @include media-breakpoint-down(md) {
+            height: 25px;
+            max-width: 100px;
+            margin-left: 0.5rem;
+        }
+        
+        @include media-breakpoint-down(sm) {
+            height: 20px;
+            max-width: 80px;
+            margin-left: 0.25rem;
+        }
+    }
+    
+    // Ensure navbar brand has proper spacing
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        
+        // Prevent logo from wrapping to next line
+        .uvle-logo {
+            flex-shrink: 0;
+        }
+    }
+}
