@@ -108,5 +108,45 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    // Frontpage carousel images settings.
+    $name = 'theme_boost/carouselimage1';
+    $title = get_string('carouselimage1','theme_boost');
+    $description = get_string('carouselimage1_desc', 'theme_boost');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'carouselimage1');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+    $name = 'theme_boost/carouselimage1_link';
+    $title = get_string('carouselimage1_link','theme_boost');
+    $description = get_string('carouselimage1_link_desc', 'theme_boost');
+    $setting = new admin_setting_configtext($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+
+    $name = 'theme_boost/carouselimage2';
+    $title = get_string('carouselimage2','theme_boost');
+    $description = get_string('carouselimage2_desc', 'theme_boost');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'carouselimage2');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+    $name = 'theme_boost/carouselimage2_link';
+    $title = get_string('carouselimage2_link','theme_boost');
+    $description = get_string('carouselimage2_link_desc', 'theme_boost');
+    $setting = new admin_setting_configtext($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+
+    $name = 'theme_boost/carouselimage3';
+    $title = get_string('carouselimage3','theme_boost');
+    $description = get_string('carouselimage3_desc', 'theme_boost');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'carouselimage3');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+    $name = 'theme_boost/carouselimage3_link';
+    $title = get_string('carouselimage3_link','theme_boost');
+    $description = get_string('carouselimage3_link_desc', 'theme_boost');
+    $setting = new admin_setting_configtext($name, $title, $description, '');
+    $setting->set_updatedcallback('theme_boost_update_settings_images');
+    $page->add($setting);
+
     $settings->add($page);
 }

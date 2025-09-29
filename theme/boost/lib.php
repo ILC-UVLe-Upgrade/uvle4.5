@@ -188,3 +188,38 @@ function theme_boost_get_pre_scss($theme) {
 
     return $scss;
 }
+
+/**
+ * Get (UVLE) Refresh boost theme's moodledata directory
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_boost_update_settings_images($settingname) {
+    global $CFG;
+
+    $parts = explode('_', $settingname);
+    $settingname = end($parts);
+
+    $syscontext = context_system::instance();
+    $component = 'theme_boost';
+
+    $filename = get_config($component, $settingname);
+    $extension = substr($filename, strrpos($filename, '.') + 1);
+
+    $fullpath = "/{$syscontext->id}/{$component}/{$settingname}/0{$filename}";
+    $fs = get_file_storage();
+    if ($file = $fs->get_file_by_hash(sha1($fullpath))) {
+        $pathname = $CFG->dataroot . '/pix_plugins/theme/boost/' . $settingname . '.' . $extension;
+        $pathpattern = $CFG->dataroot . '/pix_plugins/theme/boost/' . $settingname . '.*';
+        @mkdir($CFG->dataroot . '/pix_plugins/theme/boost/', $CFG->directorypermissions, true);
+
+        foreach (glob($pathpattern) as $filename) {
+            @unlink($filename);
+        }
+
+        $file->copy_content_to($pathname);
+    }
+
+    theme_reset_all_caches();
+}

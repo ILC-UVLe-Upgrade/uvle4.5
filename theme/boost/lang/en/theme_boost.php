@@ -58,3 +58,20 @@ $string['privacy:drawerindexclosed'] = 'The current preference for the index dra
 $string['privacy:drawerindexopen'] = 'The current preference for the index drawer is open.';
 $string['privacy:drawerblockclosed'] = 'The current preference for the block drawer is closed.';
 $string['privacy:drawerblockopen'] = 'The current preference for the block drawer is open.';
+
+// UVLe
+// Carousel Images
+$string['carouselimage1'] = 'First carousel image';
+$string['carouselimage1_desc'] = 'The first image to display in the front page carousel';
+$string['carouselimage2'] = 'Second carousel image';
+$string['carouselimage2_desc'] = 'The second image to display in the front page carousel';
+$string['carouselimage3'] = 'Third carousel image';
+$string['carouselimage3_desc'] = 'The third image to display in the front page carousel';
+
+// Links
+$string['carouselimage1_link'] = 'First carousel image link';
+$string['carouselimage1_link_desc'] = 'Redirect link when first carousel image is clicked';
+$string['carouselimage2_link'] = 'Second carousel image link';
+$string['carouselimage2_link_desc'] = 'Redirect link when second carousel image is clicked';
+$string['carouselimage3_link'] = 'Third carousel image link';
+$string['carouselimage3_link_desc'] = 'Redirect link when second carousel image is clicked';
