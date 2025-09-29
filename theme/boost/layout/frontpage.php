@@ -87,6 +87,35 @@ $regionmainsettingsmenu = $buildregionmainsettings ? $OUTPUT->region_main_settin
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
+// Add carousel slides
+function carousel_slides() {
+    global $PAGE;
+    $theme = $PAGE->theme;
+
+    $carousel_slides = "";
+    for ($idx = 1; $idx <= 3; $idx++) {
+        $idx_stringified = strval($idx);
+        $setting_name = "carouselimage" . strval($idx);
+        $link_setting_name = $setting_name . "_link";
+
+        // Retrieve settings
+        $link = isset($theme->settings->{$link_setting_name}) ? $theme->settings->{$link_setting_name} : "";
+        $file_location = $theme->setting_file_url($setting_name, $setting_name);
+        $active = $idx == 1 ? "active" : "";
+
+        // Build HTML
+        if ($file_location != NULL) {
+            $carousel_slides .= "<div class='carousel-item " . $active . "' target='_blank'>" .
+                "<a href='" . $link . "'>" .
+                    "<img id='homepage-carousel-image-". $idx_stringified ."' class='d-block w-100'>" .
+                "</a>". 
+            "</div>";
+        }
+    }
+
+    return $carousel_slides;
+}
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -106,6 +135,8 @@ $templatecontext = [
     'sitenews' => $sitenews,
     'loginurl' => get_login_url(),
     'isloggedin' => isloggedin(),
+
+    'carousel_slides' => carousel_slides(),
 ];
 
 echo $OUTPUT->render_from_template('theme_boost/frontpage', $templatecontext);

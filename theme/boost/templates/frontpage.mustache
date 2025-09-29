@@ -32,9 +32,20 @@
                 <div class="col-lg-6">
                     <div class="hero-visual text-center">
                         <div class="hero-card">
-                            <i class="fa fa-graduation-cap hero-icon"></i>
-                            <h3 class="mt-3">Start Your Learning Journey</h3>
-                            <p class="text-muted">Access courses, resources, and connect with your academic community.</p>
+                            {{! Carousel }}
+                            <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    {{{ carousel_slides }}}
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,30 +83,6 @@
 /* Frontpage-specific styles that won't conflict with existing UVLE styles */
 .frontpage-wrapper {
     background-color: #f8f9fa;
-}
-
-/* Hero Section */
-.hero-section {
-    position: relative;
-    padding: 80px 0;
-    overflow: hidden;
-    background: linear-gradient(135deg, #7b1113 0%, #550708 100%);
-    color: white;
-    min-height: 100vh;
-}
-
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url([[pix:theme|homepage_header_bg]]);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.15;
-    z-index: 1;
 }
 
 .hero-section .container {
@@ -344,6 +331,18 @@
 
 .g-4 {
     gap: 1.5rem !important;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+}
+
+.carousel-control-prev:focus,
+.carousel-control-next:focus,
+.carousel-control-prev:active,
+.carousel-control-next:active {
+    outline: none;
+    box-shadow: none; 
 }
 </style>
 
